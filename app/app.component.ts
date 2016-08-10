@@ -1,12 +1,17 @@
-import { Component } from 'angular2/core';
+import { Component, EventEmitter } from 'angular2/core';
+import { ReviewListComponent } from './review-list.component';
 import { Review } from './review.model';
 
 @Component({
   selector: 'my-app',
+  directives: [ReviewListComponent],
   template: `
     <div class="container">
       <h1>*ngEat!</h1>
-      <h3 *ngFor="#review of reviews" (click)="reviewWasSelected(review)">{{ review.name}}, Specialty: {{review.specialty}}, {{review.address}}, Price: {{review.price}}.</h3>
+        <review-list
+          [reviewList]="reviews"
+          (onReviewSelect)="reviewWasSelected($event)">
+        </review-list>
     </div>
   `
 })
@@ -22,6 +27,6 @@ export class AppComponent {
     ];
   }
   reviewWasSelected(clickedReview: Review): void {
-    console.log(clickedReview);
+    console.log('parent', clickedReview);
   }
 }
