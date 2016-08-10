@@ -7,7 +7,7 @@ import { Review } from './review.model';
   directives: [ReviewListComponent],
   template: `
     <div class="container">
-      <h1>*ngEat!</h1>
+      <h1>Cameron's *ngEat List!</h1>
         <review-list
           [reviewList]="reviews"
           (onReviewSelect)="reviewWasSelected($event)">
