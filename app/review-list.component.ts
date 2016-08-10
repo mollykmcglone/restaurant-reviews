@@ -4,13 +4,14 @@ import { Review } from './review.model';
 import { EditReviewDetailsComponent } from './edit-review-details.component';
 import { NewReviewComponent } from './new-review.component';
 import { PricepointPipe } from './pricepoint.pipe';
+import { FeedbackReviewComponent } from './feedback-review.component';
 
 @Component({
   selector: 'review-list',
   inputs: ['reviewList'],
   outputs: ['onReviewSelect'],
   pipes: [PricepointPipe],
-  directives: [ReviewComponent, EditReviewDetailsComponent, NewReviewComponent],
+  directives: [ReviewComponent, EditReviewDetailsComponent, NewReviewComponent, FeedbackReviewComponent],
   template: `
     <select (change)="onChange($event.target.value)">
       <option value="all" selected="selected">Show All</option>
@@ -22,6 +23,7 @@ import { PricepointPipe } from './pricepoint.pipe';
        (click)="reviewClicked(currentReview)" [class.selected]="currentReview === selectedReview"
        [review]="currentReview">
     </review-display>
+    <feedback-review *ngIf="selectedReview" [review]="selectedReview"></feedback-review>
     <edit-review-details *ngIf="selectedReview" [review]="selectedReview">
     </edit-review-details>
     <new-review (onSubmitNewReview)="createReview($event)"></new-review>
