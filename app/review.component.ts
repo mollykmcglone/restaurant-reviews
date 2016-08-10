@@ -5,7 +5,7 @@ import { Review } from './review.model';
   selector: 'review-display',
   inputs: ['review'],
   template: `
-    <h3>{{ review.name}}, Specialty: {{review.specialty}}, {{review.address}}, Price: {{review.price}}.</h3>
+      <h3>{{ review.name }} </h3>
   `
 })
 export class ReviewComponent {
